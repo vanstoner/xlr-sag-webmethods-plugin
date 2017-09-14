@@ -1,0 +1,17 @@
+plugins {
+}
+
+version="0.0.1" 
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+}
+

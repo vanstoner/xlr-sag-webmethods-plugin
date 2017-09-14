@@ -1,0 +1,28 @@
+<synthetic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.xebialabs.com/deployit/synthetic"
+           xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd">
+           
+    
+    <type type="webmethods.Server" extends="configuration.HttpConnection">
+        <property name="deployerCLI" required="false"               category="input" description="Path to the local deployer CLI" />
+        <property name="proxyHost" required="false"/>
+    </type>
+
+    <type type="webmethods.cliTask" extends="xlrelease.PythonScript" virtual="true" >
+        <property name="iconLocation" default="webmethods/sag-icon.png" hidden="true" />
+        <property name="taskColor" hidden="true" default="#558BBC" />
+        <property name="cli" kind="ci" referenced-type="webmethods.Server" required="true" category="input" />
+
+        <property name="output" required="false" category="output" description="Console output of the process."/>
+        <property name="err"    required="false" category="output" description="Error stream of the process."/>
+    </type>
+
+    <type type="webmethods.deployProjectBinary" extends="webmethods.cliTask">
+        <property name="binaryLocation"    category="input" description="Location of the binary to be deployed - can be a local file or URL" />
+        <property name="locationUsername" category="input" description="If location is remote and password protected - username" required="false"/>
+        <property name="locationPassword" category="input" description="If location is remote and password protected - password" password="true" required="false"/>
+        <property name="projectName"   category="input" description="Name of Webmethods project" />
+        <property name="outputPath" category="input" hidden="true" default="work/webmethods/" required="false" description="Local location for file if downloaded from URL"/>  
+    </type>
+
+</synthetic>
